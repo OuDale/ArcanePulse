@@ -27,9 +27,7 @@ jobs:
         import requests
 
         websites = [
-            'https://jerryz.com.cn',
-            'https://blog.jerryz.com.cn'
-            # 添加更多网站
+            'https://arcanepulse-open-webui.hf.space'
         ]
 
         def check_website(url):
