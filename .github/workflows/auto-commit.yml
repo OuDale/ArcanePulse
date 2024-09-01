@@ -16,13 +16,13 @@ jobs:
     - name: Check out the master branch
       run: git checkout master
 
-    - name: Pull latest changes
+    - name: Fetch and merge changes
       run: |
-        git pull || { echo 'Pull failed'; exit 1; }
+        git fetch origin master
+        git merge origin/master
 
     - name: Make changes
       run: |
-        # 这里是你希望自动化进行的更改
         echo "Auto commit on $(date)" > auto_commit.txt
 
     - name: Commit changes
@@ -32,6 +32,9 @@ jobs:
         git add .
         git commit -m "Automated commit for $(date +'%Y-%m-%d')"
 
+    - name: Pull before push
+      run: git pull origin master
+  
     - name: Push changes
       uses: ad-m/github-push-action@v0.6.0
       with:
